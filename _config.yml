@@ -1,7 +1,7 @@
 # Site settings
-title: Jekyll-Uno
-description: 'Jekyll-Uno - a minimal, responsive theme for Jekyll'
-url: 'http://joshgerdes.com/jekyll-uno'
+title: CrunchSlashDev
+description: 'We make neat things'
+url: 'http://crunchslashdev.com'
 baseurl: '/'
 google_analytics: 'UA-38179399-2'
 disqus_shortname: 'crunchslashdev'
@@ -9,9 +9,9 @@ disqus_shortname: 'crunchslashdev'
 author:
   name: 'Randy Butts'
   email: admin@crunchslashdev.com
-  twitter_username: fluteamahoot
+  twitter_username: crunchslashdev
   github_username:  fluteamahoot
-  linkedin_username:  fluteamahoot
+  linkedin_username:  null
 
 defaults:
   -
