@@ -10,5 +10,7 @@ So a bit about ourselves would be helpful to put in a post like this. The person
 
 As for these blogs, Someone will write one once every other week at least. Keeps us on track.
 
+
 Thanks for reading,
+
 Randy
