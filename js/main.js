@@ -34,6 +34,16 @@ $(document).ready(function () {
 
   if (window.location.hash && window.location.hash == '#blog') {
     $('.panel-cover').addClass('panel-cover--collapsed')
+
+    $(".projects-page").hide()
+    $(".main-post-list").show()
+  }
+
+  if (window.location.hash && window.location.hash == '#projects') {
+    $('.panel-cover').addClass('panel-cover--collapsed')
+
+    $(".main-post-list").hide()
+    $(".projects-page").show()
   }
 
   if (window.location.pathname !== '{{ site.baseurl }}' && window.location.pathname !== '{{ site.baseurl }}index.html') {

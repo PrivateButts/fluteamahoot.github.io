@@ -25,7 +25,71 @@ layout: default
 
 
 <div class="projects-page">
-  <h1>CatFence</h1>
-  <hr class="post-list__divider ">
-
+  <h1 class="project-header">CatFence <small>- Working Demo</small></h1>
+  <div id="CFOverallPB" class="project-overallPB"></div>
+  <div id="CFTeam"></div>
+  <hr class="project-divider ">
+  <h1 class="project-header">Private Butts' Family Friendly Space Combat Simulator <small>- Early Prototyping</h1>
+  <div id="PBFFSCSOverallPB" class="project-overallPB"></div>
 </div>
+
+<script>
+  CatFenceMS = {
+    general: {
+      color:'#FCB03C',
+      tasks: 8,
+      finished: 2,
+    },
+    people: [
+      {
+        name: "Randy",
+        icon: "/images/randy.jpg",
+        status: "Getting Sockets and UNET to play nice",
+        tasks: 25,
+        finished: 7,
+      },
+
+      {
+        name: "Shannon",
+        icon: "/images/shannon.jpg",
+        status: "Painting all the kitties",
+        tasks: 27,
+        finished: 1,
+      },
+
+      {
+        name: "Jake",
+        icon: "/images/reed.jpg",
+        status: "Testing the limits of Unity's audio stack",
+        tasks: 10,
+        finished: 0,
+      },
+    ]
+  }
+
+  var CFOverallPB = new ProgressBar.Line('#CFOverallPB', {
+      color: CatFenceMS.general.color
+  });
+  CFOverallPB.animate(CatFenceMS.general.finished/CatFenceMS.general.tasks)
+
+  for(var i=0; i<CatFenceMS.people.length;i++){
+    var person = CatFenceMS.people[i]
+    $('#CFTeam').append("<div class='team-member'><div class='team-member-icon' id=CF"+person.name+"PB></div><div class='team-member-text'><h3>"+person.name+"</h3><div>"+person.status+"</div></div></div>")
+    $("#CF"+person.name+"PB").css("background", "url("+person.icon+") no-repeat")
+    $("#CF"+person.name+"PB").css("background-size", "contain")
+    var tempcircle = new ProgressBar.Circle("#CF"+person.name+"PB", {
+      color: CatFenceMS.general.color,
+      strokeWidth:4,
+    })
+    tempcircle.animate(person.finished/person.tasks)
+  }
+
+
+
+
+  var PBFFSCSOverallPB = new ProgressBar.Line('#PBFFSCSOverallPB', {
+      color: '#28A680'
+  });
+
+  PBFFSCSOverallPB.animate(1.0)
+</script>
