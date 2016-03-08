@@ -98,3 +98,13 @@ h1 > small{
 	color:grey;
 	font-size:large;
 }
+
+ul.gameinfo{
+  list-style-type: none;
+  font-weight: bold;
+  margin-left: inherit;
+}
+
+ul.gameinfo > li > small{
+  font-weight: normal;
+}
