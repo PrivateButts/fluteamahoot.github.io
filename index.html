@@ -59,6 +59,7 @@ layout: default
     people: [
       {
         name: "Randy",
+        role: "Programmer",
         icon: "/images/randy.jpg",
         status: "Getting Sockets and UNET to play nice",
         tasks: 25,
@@ -67,6 +68,7 @@ layout: default
 
       {
         name: "Shannon",
+        role: "Artist",
         icon: "/images/shannon.jpg",
         status: "Painting all the kitties",
         tasks: 27,
@@ -75,6 +77,7 @@ layout: default
 
       {
         name: "Jake",
+        role: "Sound Engineer",
         icon: "/images/reed.jpg",
         status: "Testing the limits of Unity's audio stack",
         tasks: 10,
@@ -90,7 +93,7 @@ layout: default
 
   for(var i=0; i<CatFenceMS.people.length;i++){
     var person = CatFenceMS.people[i]
-    $('#CFTeam').append("<div class='team-member'><div class='team-member-icon' id=CF"+person.name+"PB></div><div class='team-member-text'><h3>"+person.name+"</h3><div>"+person.status+"</div></div></div>")
+    $('#CFTeam').append("<div class='team-member'><div class='team-member-icon' id=CF"+person.name+"PB></div><div class='team-member-text'><h3>"+person.name+"</h3><h4 class='team-member-role'>"+person.role+"</h4><div>"+person.status+"</div></div></div>")
     $("#CF"+person.name+"PB").css("background", "url("+person.icon+") no-repeat")
     $("#CF"+person.name+"PB").css("background-size", "contain")
     var tempcircle = new ProgressBar.Circle("#CF"+person.name+"PB", {

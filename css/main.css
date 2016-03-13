@@ -56,6 +56,12 @@ pre.highlight code,
 }
 
 
+.content-wrapper{
+  width:initial ;
+  max-width: none;
+}
+
+
 .project-header{
   margin-bottom: -.3em;
   font-size: 2.5em;
@@ -72,6 +78,7 @@ pre.highlight code,
 
 .team-member{
   margin-top: .3em;
+  margin-bottom: 2em;
   width:33%;
   float:left;
 }
@@ -91,6 +98,11 @@ pre.highlight code,
 	border-radius: 75px;
 	-webkit-border-radius: 75px;
 	-moz-border-radius: 75px;
+}
+
+.team-member-role{
+  margin-top: -10px;
+  font-size: 16pt;
 }
 
 
