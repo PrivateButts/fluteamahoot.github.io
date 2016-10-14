@@ -25,90 +25,48 @@ layout: default
 
 
 <div class="projects-page">
-  <h1 class="project-header">Cats on a Fence <small>- Final Demo</h1>
-  <div id="CFOverallPB" class="project-overallPB"></div>
-  <ul class=gameinfo>
-    <li>Genre: <small>Party Game</small></li>
-    <li>Platform: <small>Android and iOS</small></li>
-    <li>Release Date: <small>Soon</small></li>
-  </ul>
-  <div>
-    <p>Never has solving the world's problems been so easy! All you need is an Android or iOS device and some people to get into a disagreement over. The game is simple- don't get out. The last person standing gets the last slice of pizza, or waffle or something. How do you get out? Through the door silly! Really though, just hold your phone still. That's it. If your so called friends decide to knock your phone out of your hand that's their (recommended) choice. So get some friends, break their phones, and win the last slice of pizza! That'll show them.</p>
-  </div>
-  <div id="CFTeam"></div>
-  <hr class="project-divider ">
-  <h1 class="project-header">Private Butts' Family Friendly Space Combat Simulator <small>- Early Prototyping</h1>
-  <div id="PBFFSCSOverallPB" class="project-overallPB"></div>
-  <ul class=gameinfo>
-    <li>Genre: <small>Space FPS</small></li>
-    <li>Platform: <small>Windows, Mac, and Linux/SteamOS</small></li>
-    <li>Release Date: <small>TBD</small></li>
-  </ul>
-  <div>
-    <p>Two ships, sixteen players, and a hell of a lot of fun, Private Butts' Family Friendly Space Combat Simulator is the ultimate (by default) first person spaceship CQC simulator in it's class. PBFFSCS's primary game mode is objective based attack and defend mode where both teams are simultaneously attacking and defending. More information soon!</p>
-  </div>
+    {% for project in site.projects %}
+        <h1 class="project-header">{{ project.title }}<small>- {{ project.status }}</h1>
+        <div id="{{ project.SC }}OverallPB" class="project-overallPB"></div>
+        <ul class=gameinfo>
+            <li>Genre: <small>{{ project.genre }}</small></li>
+            <li>Platform: <small>{{ project.platform }}</small></li>
+            <li>Release Date: <small>{{ project.release }}</small></li>
+        </ul>
+        <div>
+            <p>{{ project.content }}</p>
+        </div>
+        <div id="{{ project.SC }}Team">
+            {% for person in project.people %}
+                <div class='team-member'>
+                    <div class='team-member-icon' id="{{ project.SC }}{{ person.name }}PB"></div>
+                    <div class='team-member-text'>
+                        <h3>{{ person.name }}</h3>
+                        <h4 class='team-member-role'>{{person.role}}</h4>
+                        <div>{{person.status}}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <script>
+            var OverallPB = new ProgressBar.Line('#{{ project.SC }}OverallPB', {
+                color: "{{ project.color }}"
+            });
+            OverallPB.animate({{ project.finished }}/{{ project.tasks }})
+
+
+            {% for person in project.people %}
+                $("#{{ project.SC }}{{ person.name }}PB").css("background", "url({{ person.icon }}) no-repeat")
+                $("#{{ project.SC }}{{ person.name }}PB").css("background-size", "contain")
+
+                var tempcircle = new ProgressBar.Circle("#{{ project.SC }}{{ person.name }}PB", {
+                    color: "{{ project.color }}",
+                    strokeWidth:4,
+                })
+                tempcircle.animate({{ person.finished }}/{{ person.tasks }})
+            {% endfor %}
+        </script>
+        <hr class="project-divider ">
+    {% endfor %}
 </div>
-
-<script>
-  CatFenceMS = {
-    general: {
-      color:'#FCB03C',
-      tasks: 8,
-      finished: 2,
-    },
-    people: [
-      {
-        name: "Randy",
-        role: "Programmer",
-        icon: "/images/randy.jpg",
-        status: "Getting Sockets and UNET to play nice",
-        tasks: 25,
-        finished: 7,
-      },
-
-      {
-        name: "Shannon",
-        role: "Artist",
-        icon: "/images/shannon.jpg",
-        status: "Painting all the kitties",
-        tasks: 27,
-        finished: 1,
-      },
-
-      {
-        name: "Jake",
-        role: "Sound Engineer",
-        icon: "/images/reed.jpg",
-        status: "Testing the limits of Unity's audio stack",
-        tasks: 10,
-        finished: 0,
-      },
-    ]
-  }
-
-  var CFOverallPB = new ProgressBar.Line('#CFOverallPB', {
-      color: CatFenceMS.general.color
-  });
-  CFOverallPB.animate(CatFenceMS.general.finished/CatFenceMS.general.tasks)
-
-  for(var i=0; i<CatFenceMS.people.length;i++){
-    var person = CatFenceMS.people[i]
-    $('#CFTeam').append("<div class='team-member'><div class='team-member-icon' id=CF"+person.name+"PB></div><div class='team-member-text'><h3>"+person.name+"</h3><h4 class='team-member-role'>"+person.role+"</h4><div>"+person.status+"</div></div></div>")
-    $("#CF"+person.name+"PB").css("background", "url("+person.icon+") no-repeat")
-    $("#CF"+person.name+"PB").css("background-size", "contain")
-    var tempcircle = new ProgressBar.Circle("#CF"+person.name+"PB", {
-      color: CatFenceMS.general.color,
-      strokeWidth:4,
-    })
-    tempcircle.animate(person.finished/person.tasks)
-  }
-
-
-
-
-  var PBFFSCSOverallPB = new ProgressBar.Line('#PBFFSCSOverallPB', {
-      color: '#28A680'
-  });
-
-  PBFFSCSOverallPB.animate(.05)
-</script>

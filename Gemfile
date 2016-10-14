@@ -1,2 +1,5 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 gem 'github-pages'
+gem 'nokogiri', '>=1.6.8.rc3'
+gem 'glynn'
+gem 'jekyll-watch'

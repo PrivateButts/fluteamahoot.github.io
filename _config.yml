@@ -1,9 +1,10 @@
 # Site settings
 title: CrunchSlashDev
-description: 'Neat Games, Built Openly'
+description: 'Neat Things, Built Openly'
 url: 'http://crunchslashdev.com'
 baseurl: '/'
-google_analytics: 'UA-38179399-2'
+# google_analytics: 'UA-38179399-2'
+piwik: '//crunchslashdev.com/piwik/'
 disqus_shortname: 'crunchslashdev'
 
 author:
@@ -11,6 +12,9 @@ author:
   email: admin@crunchslashdev.com
   twitter_username: crunchslashdev
   facebook_username: crunchslashdev
+
+collections:
+    - projects
 
 defaults:
   -
@@ -26,6 +30,10 @@ paginate: 10
 permalink: /:year/:title/
 markdown: kramdown
 highlighter: rouge
+
+ftp_host: 'ftp.crunchslashdev.com'
+ftp_dir: '/home1/zacdakec/public_html/crunchslashdev'
+ftp_passive: false
 
 kramdown:
   # use Github Flavored Markdown
